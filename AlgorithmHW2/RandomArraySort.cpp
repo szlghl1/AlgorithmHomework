@@ -15,19 +15,19 @@ int main(int argc, char const *argv[])
 {
 	auto systemSort = [](std::vector<int>& v) {std::sort(v.begin(), v.end()); };
 	std::cout << "Testing Bubble Sort..." << std::endl;
-	testSorting(1, bubbleSort);
+	testSorting(1000, bubbleSort);
 	std::cout << std::endl << "Testing system nlgn sort..." << std::endl;
-	testSorting(300, systemSort);
+	testSorting(50000, systemSort);
 	std::cout << std::endl << "Testing Counting sort..." << std::endl;
-	testSorting(300, countingSort);
+	testSorting(100000, countingSort);
 	return 0;
 }
 
 void testSorting(int baseNum, decltype(countingSort) sortingFunc)
 {
-	for (int i = 0; i != 10; i++)
+	for (int i = 1; i <= 10; i++)
 	{
-		int numEle = baseNum << i; 
+		int numEle = baseNum * i; 
 		std::vector<int> v;
 		fillRandomElement(numEle, v);
 		auto start = std::chrono::system_clock::now();
