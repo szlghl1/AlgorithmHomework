@@ -16,8 +16,9 @@ int main(int argc, char const *argv[])
 
 void maxHeapify(std::vector<int>& v, int index)
 {
-	int leftIndex = index * 2;
-	int rightIndex = index * 2 + 1;
+	//because index is begin from 0, it is different from textbook
+	int leftIndex = index * 2 + 1;
+	int rightIndex = index * 2 + 2;
 	int largestIndex = index;
 	if(leftIndex < v.size() && v[index] < v[leftIndex])
 		largestIndex = leftIndex;
