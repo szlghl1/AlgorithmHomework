@@ -37,7 +37,7 @@ void maxHeapify(std::vector<int>& v, int index)
 void maxHeapifyVector(std::vector<int>& v)
 {
 	//heapify it bottom up
-	for(int i = v.size() - 1; i >= 0; i--)
+	for(int i = (v.size() - 1)/2; i >= 0; i--)
 	{
 		maxHeapify(v, i);
 	}
