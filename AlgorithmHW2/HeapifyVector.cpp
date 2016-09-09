@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 
+int swapTimes = 0;
 void maxHeapifyVector(std::vector<int>& v);
 
 int main(int argc, char const *argv[])
@@ -13,29 +14,30 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 
+void maxHeapify(std::vector<int>& v, int index)
+{
+	int leftIndex = index * 2;
+	int rightIndex = index * 2 + 1;
+	int largestIndex = index;
+	if(leftIndex < v.size() && v[index] < v[leftIndex])
+		largestIndex = leftIndex;
+	if(rightIndex < v.size() && v[largestIndex] < v[rightIndex])
+		largestIndex = rightIndex;
+	if(largestIndex != index)
+	{
+		swapTimes++;
+		int temp = v[index];
+		v[index] = v[largestIndex];
+		v[largestIndex] = temp;
+		maxHeapify(v, largestIndex);
+	}
+	return;
+}
+
 void maxHeapifyVector(std::vector<int>& v)
 {
-	int swapTimes = 0;
-	auto maxHeapify = [&swapTimes](std::vector<int>& v, int index)
-	{
-		int leftIndex = index * 2;
-		int rightIndex = index * 2 + 1;
-		int largestIndex = index;
-		if(leftIndex < v.size() && v[index] < v[leftIndex])
-			largestIndex = leftIndex;
-		if(rightIndex < v.size() && v[largestIndex] < v[rightIndex])
-			largestIndex = rightIndex;
-		if(largestIndex != index)
-		{
-			swapTimes++;
-			int temp = v[index];
-			v[index] = v[largestIndex];
-			v[largestIndex] = temp;
-			maxHeapify[largestIndex];
-		}
-	};
 	//heapify it bottom up
-	for()
+	for(int i = v.size() - 1; i >= 0; i--)
 	{
 		maxHeapify(v, i);
 	}
