@@ -6,7 +6,7 @@ void maxHeapifyVector(std::vector<int>& v);
 
 int main(int argc, char const *argv[])
 {
-	std::vector<int> v = {23, 56, 87, 46, 57, 12, 78, 23, 12, 43, 99, 89, 54, 32, 25, 19, 17, 14, 11, 10};
+	std::vector<int> v = {23, 99, 56, 89, 87, 54, 46, 32, 57, 25, 12, 19, 78, 17, 23, 14, 12, 11, 43, 10};
 	maxHeapifyVector(v);
 	std::cout << "The heapified vector: " << std::endl;
 	for(auto i = v.begin(); i != v.end(); i++)
