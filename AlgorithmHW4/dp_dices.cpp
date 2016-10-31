@@ -3,6 +3,7 @@
 #include <vector>
 #include <unordered_map>
 
+//If you don't want to set maxSum manully, you can calculate it by sum(max_side(dice_i))
 void dp_dice(const std::vector<std::vector<int>> dice, const int maxSum)
 {
 	const int ndice = dice.size();
@@ -10,6 +11,7 @@ void dp_dice(const std::vector<std::vector<int>> dice, const int maxSum)
 		return;
 	//row for dice, column for sum, which is easier to loop
 	std::vector<std::vector<int>> dp(ndice + 1, std::vector<int>(maxSum + 1, 0));
+	dp[0][0] = 1;
 	std::vector<std::unordered_map<int, int>> dice_has_nSide_of_n(ndice);
 	std::ofstream csv;
 	csv.open("dp_dice.csv");
@@ -35,10 +37,6 @@ void dp_dice(const std::vector<std::vector<int>> dice, const int maxSum)
 				if (k->first > j)
 				{
 					continue;
-				}
-				else if (k->first == j)
-				{
-					dp[i + 1][j] += k->second;
 				}
 				else
 				{
